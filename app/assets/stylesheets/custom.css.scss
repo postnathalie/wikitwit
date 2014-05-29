@@ -15,7 +15,7 @@ html {
 }
 
 body {
-	padding-top: 60px;
+	padding-top: 80px;
 }
 
 section {
@@ -93,6 +93,7 @@ aside {
 			line-height: 1;
 		}
 		h1 {
+			font-size: 3em;
 			text-align: left;
 			margin-bottom: 3px;
 			margin-top: 0px;
@@ -147,3 +148,7 @@ input {
 	@extend .form-group;
 	@extend .control-label;
 }
+
+
+
+
