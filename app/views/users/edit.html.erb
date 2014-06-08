@@ -1,0 +1,10 @@
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
+<div class="form-inline center-block">
+	<div class="form-group">
+			<%= form_for @user, html: { multipart: true } do |f| %>
+				<%= render 'fields', f: f %>
+				<%= f.submit "Edit my account", class: "btn btn-large btn-primary" %>
+			<% end %>
+	</div>
+</div>
