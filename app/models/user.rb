@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }
 	validates_confirmation_of :password
 	has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_many :surveys, dependent: :destroy
+  accepts_nested_attributes_for :surveys, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
   	def User.new_remember_token
   		SecureRandom.urlsafe_base64

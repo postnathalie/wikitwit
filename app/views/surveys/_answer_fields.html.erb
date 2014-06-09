@@ -1,0 +1,8 @@
+<fieldset>
+	<%= f.label :content, "Answer" %>
+	<%= f.text_field :content %>
+	<% if current_user?(@survey.user) %>
+		<%= f.hidden_field :_destroy %>
+		<%= link_to "remove", '#', class: "remove_fields" %>
+	<% end %>
+</fieldset>

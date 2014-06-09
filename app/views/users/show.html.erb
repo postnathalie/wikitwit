@@ -6,4 +6,12 @@
 			<h1><%= @user.name %></h1>
 		</section>
 	</aside>
+
+	<div class="span8">
+    <% if @user.surveys.any? %>
+      <h3>Surveys (<%= @user.surveys.count %>)</h3>
+      	<%= link_to "New Survey", new_survey_path %>
+        <%= render @surveys %>
+    <% end %>
+  </div>
 </div>

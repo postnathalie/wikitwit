@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find(params[:id])
+    @surveys = @user.surveys
   end
   
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Hi #{@user.name}! Welcome to WikiTwit!"
+      flash[:success] = "Hi #{@user.name}! Welcome to SurveyShare!"
       redirect_to @user
     else
       render 'new'
@@ -38,14 +39,6 @@ end
 
     def user_params
   	     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
-    end
-
-    def signed_in_user
-        unless signed_in?
-        store_location
-        flash[:warning] = "Please sign in."
-        redirect_to signin_url
-        end
     end
 
     def correct_user

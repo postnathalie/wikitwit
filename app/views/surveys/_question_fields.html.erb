@@ -1,0 +1,18 @@
+<fieldset>
+	<p>
+		<%= f.label :content, "Question" %>
+		<%= f.hidden_field :_destroy %>
+		<%= link_to "remove", '#', class: "remove_fields" %>
+
+		<%= f.text_area :content, :rows => 3 %>
+	</p>
+
+	<%= f.fields_for :answers do |builder| %>
+		<%= render 'answer_fields', :f => builder %>
+		<% end %>
+		
+		<% if current_user?(@survey.user) %>
+			<p><%= link_to_add_fields "Add Answer", f, :answers %></p>
+		<% end %>
+</fieldset>
+

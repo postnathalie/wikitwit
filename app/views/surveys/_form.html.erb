@@ -1,0 +1,22 @@
+<div class="form-inline center-block">
+	<div class="form-group">
+		<%= form_for @survey do |f| %>
+		
+		<p>	
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</p>
+
+		<%= f.fields_for :questions do |builder| %>
+			<%= render 'surveys/question_fields', :f => builder %>
+		<% end %>
+		
+		<% if current_user?(@survey.user) %>
+			<p><%= link_to_add_fields "Add Question", f, :questions %></p>
+		<% end %>
+		
+		<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
